@@ -1,0 +1,60 @@
+@import './reset.css';
+@import './common.css';
+
+#header {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    max-width: 1920px;
+    width: 100%;
+    height: 5%;
+    mix-blend-mode: difference;
+    color: #fff;
+}
+
+#header .inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+    height: 100%;
+}
+
+#header .percent-area,
+#header .menu-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header .menu-area {
+    cursor: pointer;
+}
+
+#header .percent-area span,
+#header .menu-area span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1200px) {
+    #header {
+        top: 1.5%;
+    }
+
+    #header .percent-area span,
+    #header .menu-area span {
+        font-size: 12px;
+        font-weight: 700;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    #header {
+        top: 0.5%;
+    }
+}
+
+@media only screen and (max-width: 767px) {}
