@@ -31,8 +31,8 @@ body {
 
 body {
     position: relative;
-    min-width: 1201px;
     font-family: "Inter", sans-serif;
+    min-width: 320px;
     font-size: 16px;
     line-height: 1.5;
     background: #000;
