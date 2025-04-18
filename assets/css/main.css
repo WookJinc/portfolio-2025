@@ -507,9 +507,10 @@
 
 /* sc-previous */
 .sc-previous {
-    color: #fff;
+    width: 100%;
     background: #1e1e20;
     padding: 5% 0;
+    color: #fff;
 }
 
 .sc-previous .title-area {
@@ -540,105 +541,138 @@
 }
 
 .sc-previous .previous-list {
-    margin-bottom: 2.5%;
-}
-
-.sc-previous .previous-list,
-.sc-previous .student-list {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 0 3%;
+    flex-direction: column;
 }
 
-.sc-previous .previous-item,
-.sc-previous .student-item {
+.sc-previous .previous-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.sc-previous .previous-item .item-link {
     position: relative;
-    flex: 1;
-    padding: 2.5%;
-    border-radius: 16px;
-    min-width: 320px;
-    min-height: 500px;
-    background: #000;
-}
-
-.sc-previous .student-item {
-    max-height: 500px;
-    flex: 1 0 33.333%;
-}
-
-.sc-previous .previous-item img,
-.sc-previous .student-item img {
-    object-fit: contain;
-}
-
-.sc-previous .previous-item a,
-.sc-previous .student-item a {
-    width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 1000px;
+    height: 60vh;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-.sc-previous .previous-item img {
-    width: 170px;
-}
-
-.sc-previous .student-item img {
-    width: 150px;
-}
-
-.sc-previous .previous-item .hover-img,
-.sc-previous .student-item .hover-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+.sc-previous .previous-item .bg {
+    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 16px;
-    transition: all 0.6s ease;
-    opacity: 0;
-    pointer-events: none;
+    overflow: hidden;
 }
 
-.previous-item:hover .hover-img,
-.student-item:hover .hover-img {
+.sc-previous .previous-item .bg:hover .ic-wrapper {
     opacity: 1;
 }
 
-.sc-previous .previous-item .text-area,
-.sc-previous .student-item .text-area {
+.sc-previous .previous-item .bg .ic-wrapper {
     position: absolute;
-    bottom: 5%;
-    left: 5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+}
+
+.sc-previous .previous-item .bg .ic-arrow {
+    padding: 5%;
+    width: 25%;
+    transform: rotate(270deg);
+    transform: will-change;
+    fill: #fff;
+    background: #000;
+    border-radius: 50%;
+}
+
+.sc-previous .previous-item .bg .ic-arrow::before {
+    content: '';
+    color: #fff;
+}
+
+.sc-previous .previous-item .bg img {
+    object-position: 75% 50%;
+}
+
+.sc-previous .previous-item .bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('../images/noise.png');
+    background-size: 300px 300px;
+    z-index: 1;
+}
+
+.sc-previous .previous-item .text-area {
+    padding: 1.5% 0;
+    color: #fff;
+}
+
+.sc-previous .previous-item:first-of-type .text-area {
+    padding: 2% 0;
+}
+
+.sc-previous .previous-item .text-area .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sc-previous .previous-item .text-area .title {
+    flex: 5.5;
+    font-size: 80px;
+    font-weight: 700;
+}
+
+.sc-previous .previous-item .text-area .desc {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    text-transform: uppercase;
-    font-weight: 700;
-    mix-blend-mode: hard-light;
-    color: #fff;
+    gap: 36px;
+    flex: 4.5;
+    color: rgba(255, 255, 255, 0.5);
 }
 
-.sc-previous .previous-item .text-area span,
-.sc-previous .previous-item .text-area p,
-.sc-previous .student-item .text-area span,
-.sc-previous .student-item .text-area p {
-    font-size: 14px;
-    opacity: 0.75;
+.sc-previous .previous-item .text-area .desc-main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.sc-previous .list-text {
-    display: block;
-    width: 100%;
-    padding: 1% 3%;
-    font-weight: 700;
-    color: #fff;
+.sc-previous .previous-item .desc p {
+    font-size: 16px;
+}
+
+.sc-previous .previous-item .desc .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sc-previous .previous-item .desc .tag-item {
+    font-size: 12px;
+    color: #1e1e21;
+    background: #fff;
+    padding: 0.5% 1.5%;
+    border-radius: 100px;
+}
+
+.sc-previous .previous-item .link-blog span {
+    font-size: 18px;
 }
 
 /* footer */
@@ -745,7 +779,6 @@
         font-size: 36px;
     }
 
-
     .sc-about .about-item:nth-of-type(3) {
         justify-content: center;
         padding-top: 15%;
@@ -779,6 +812,37 @@
     }
 
     .sc-work .work-item .desc .tag-list {
+        justify-content: center;
+    }
+
+    /* sc-previous */
+    .sc-previous .previous-list {
+        padding-top: 5%;
+    }
+
+    .sc-previous .previous-item:first-of-type {
+        padding-bottom: 3%;
+    }
+
+    .sc-previous .previous-item .item-link {
+        height: 40vh;
+    }
+
+    .sc-previous .previous-item .text-area {
+        padding: 3% 0 4%;
+    }
+
+    .sc-previous .previous-item .text-area .inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sc-previous .previous-item .desc {
+        align-items: center;
+    }
+
+    .sc-previous .previous-item .desc .tag-list {
         justify-content: center;
     }
 }
@@ -914,7 +978,7 @@
     }
 
     .sc-previous .title-area {
-        padding-bottom: 10%;
+        padding-bottom: 15%;
     }
 
     .sc-previous .title-area .title {
@@ -922,13 +986,37 @@
         padding-bottom: 10%;
     }
 
-    .sc-previous .previous-list {
-        margin-bottom: 10%;
+    .sc-previous .title-area {
+        padding-bottom: 5%;
     }
 
-    .sc-previous .previous-list,
-    .sc-previous .student-list {
-        gap: 15px;
+    .sc-previous .title {
+        font-size: 56px;
+    }
+
+    .sc-previous .previous-item .item-link {
+        height: 100%;
+    }
+
+    .sc-previous .previous-item .text-area .title {
+        font-size: 40px;
+    }
+
+    .sc-previous .previous-item .desc p {
+        font-size: 16px;
+    }
+
+    .sc-previous .previous-item .desc .tag-list {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .sc-previous .previous-item .desc .tag-item {
+        padding: 1% 1.5%;
+    }
+
+    .sc-previous .previous-item .link-blog span {
+        font-size: 16px;
     }
 
     /* footer */

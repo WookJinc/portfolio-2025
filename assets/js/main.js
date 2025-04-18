@@ -36,6 +36,24 @@ $(window).on('load', function () {
     })
 
     /* 스크롤 이벤트 */
+    document.querySelectorAll('.menu-list .menu-item a[href^="."]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+    
+            const targetSelector = link.getAttribute('href');
+            const target = document.querySelector(targetSelector);
+    
+            if (target) {
+                gsap.to(window, {
+                    scrollTo: {
+                        y: target,
+                    },
+                    ease: "power2.out"
+                });
+            }
+        });
+    });
+
     $(window).on("scroll", function () {
         currentScroll = $(window).scrollTop();
         totalHeight = $(document).height() - $(window).height();
@@ -246,5 +264,24 @@ $(window).on('load', function () {
         },
         width: "90%",
         duration: 1.5,
+    })
+
+    
+    previousItem = document.querySelectorAll(".sc-previous .previous-list .bg")
+    previousItem.forEach((element) => {
+        gsap.fromTo(element, {
+            yPercent: -10,
+            scale: 1.15
+        }, {
+            scrollTrigger: {
+                trigger: element,
+                start: "0% 50%",
+                end: "100% 10%",
+                scrub: true,
+                // markers: true,
+            },
+            yPercent: 10,
+            scale: 1,
+        })
     })
 })
