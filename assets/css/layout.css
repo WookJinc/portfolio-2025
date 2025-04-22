@@ -5,6 +5,7 @@
     position: fixed;
     top: 2%;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 10;
     max-width: 1920px;
@@ -15,8 +16,14 @@
 }
 
 #header .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
     gap: 32px;
     height: 100%;
@@ -24,8 +31,14 @@
 
 #header .percent-area,
 #header .menu-area {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
