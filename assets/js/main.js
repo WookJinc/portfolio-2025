@@ -54,6 +54,25 @@ $(window).on('load', function () {
         });
     });
 
+    const scrollDown = document.querySelector('.sc-intro .scroll a[href^="."]');
+    scrollDown.addEventListener('click', (e) => {
+        e.preventDefault();
+    
+        const targetSelector = e.currentTarget.getAttribute('href'); // 수정됨
+        const target = document.querySelector(targetSelector);
+    
+        if (target) {
+            gsap.to(window, {
+                scrollTo: {
+                    y: target,
+                },
+                duration: 1, // 추가: 스크롤 지속 시간
+                ease: "power2.out"
+            });
+        }
+    });
+
+
     $(window).on("scroll", function () {
         currentScroll = $(window).scrollTop();
         totalHeight = $(document).height() - $(window).height();
